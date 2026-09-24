@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LensBook.API/LensBook.API.csproj" />
+  <Project Path="LensBook.Application/LensBook.Application.csproj" />
+  <Project Path="LensBook.Domain/LensBook.Domain.csproj" />
+  <Project Path="LensBook.Infrastructure/LensBook.Infrastructure.csproj" />
+</Solution>
