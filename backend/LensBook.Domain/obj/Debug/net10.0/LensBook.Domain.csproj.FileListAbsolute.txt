@@ -1,0 +1,12 @@
+C:\Users\Damari\LensBook\backend\LensBook.Domain\bin\Debug\net10.0\LensBook.Domain.deps.json
+C:\Users\Damari\LensBook\backend\LensBook.Domain\bin\Debug\net10.0\LensBook.Domain.dll
+C:\Users\Damari\LensBook\backend\LensBook.Domain\bin\Debug\net10.0\LensBook.Domain.pdb
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.AssemblyInfoInputs.cache
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.AssemblyInfo.cs
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.sourcelink.json
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.dll
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\refint\LensBook.Domain.dll
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\LensBook.Domain.pdb
+C:\Users\Damari\LensBook\backend\LensBook.Domain\obj\Debug\net10.0\ref\LensBook.Domain.dll
