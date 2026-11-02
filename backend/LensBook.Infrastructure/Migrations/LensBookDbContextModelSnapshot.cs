@@ -35,7 +35,8 @@ namespace LensBook.Infrastructure.Migrations
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -47,7 +48,8 @@ namespace LensBook.Infrastructure.Migrations
 
                     b.Property<string>("Rol")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<bool>("Verificado")
                         .HasColumnType("boolean");

@@ -1,6 +1,13 @@
-@LensBook.API_HostAddress = http://localhost:5026
-
-GET {{LensBook.API_HostAddress}}/weatherforecast/
+### 1. Obtener todos los usuarios (GET)
+GET http://localhost:5026/api/usuarios
 Accept: application/json
 
-###
+### 2. Crear un nuevo usuario (POST)
+POST http://localhost:5026/api/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "email": "ana@correo.com",
+  "passwordHash": "temporal123"
+}

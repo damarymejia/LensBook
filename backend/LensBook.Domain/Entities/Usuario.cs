@@ -1,3 +1,5 @@
+using LensBook.Domain.Enums;
+
 namespace LensBook.Domain.Entities;
 
 public class Usuario
@@ -6,7 +8,7 @@ public class Usuario
     public string Nombre { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
-    public string Rol { get; set; } = "Cliente";
-    public string Estado { get; set; } = "Activo";
+    public RolUsuario Rol { get; set; } = RolUsuario.Cliente;
+    public EstadoCuenta Estado { get; set; } = EstadoCuenta.Activo;
     public bool Verificado { get; set; } = false;
 }
