@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "M1bXglaVmNE=",
+  "dgSpecHash": "sZ3h+n1HrsI=",
   "success": true,
   "projectFilePath": "C:\\Users\\Damari\\LensBook\\backend\\LensBook.API\\LensBook.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Damari\\.nuget\\packages\\dotnetenv\\3.2.0\\dotnetenv.3.2.0.nupkg.sha512",
+    "C:\\Users\\Damari\\.nuget\\packages\\fluentvalidation\\12.2.0\\fluentvalidation.12.2.0.nupkg.sha512",
+    "C:\\Users\\Damari\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.2.0\\fluentvalidation.dependencyinjectionextensions.12.2.0.nupkg.sha512",
     "C:\\Users\\Damari\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Damari\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.12\\microsoft.aspnetcore.authentication.jwtbearer.10.0.12.nupkg.sha512",
     "C:\\Users\\Damari\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",

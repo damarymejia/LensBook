@@ -142,3 +142,5 @@ C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\Swashbuckle.AspN
 C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\Scalar.AspNetCore.dll
+C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\FluentValidation.dll
+C:\Users\Damari\LensBook\backend\LensBook.API\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll

@@ -1,13 +1,35 @@
-### 1. Obtener todos los usuarios (GET)
-GET http://localhost:5026/api/usuarios
-Accept: application/json
-
-### 2. Crear un nuevo usuario (POST)
-POST http://localhost:5026/api/usuarios
+```http
+### 1. Crear un usuario correctamente
+POST http://localhost:5157/api/usuarios
 Content-Type: application/json
 
 {
   "nombre": "Ana",
   "email": "ana@correo.com",
-  "passwordHash": "temporal123"
+  "password": "clave123"
 }
+
+### 2. Intentar crear un usuario con email inválido
+POST http://localhost:5157/api/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "correosinArroba.com",
+  "password": "clave123"
+}
+
+### 3. Intentar crear un usuario con contraseña demasiado corta
+POST http://localhost:5026/api/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "María",
+  "email": "maria@correo.com",
+  "password": "123"
+}
+
+### 4. Consultar todos los usuarios
+GET http://localhost:5026/api/usuarios
+Accept: application/json
+```
