@@ -11,44 +11,50 @@ namespace LensBook.API.Controllers;
 public class UsuariosController : ControllerBase
 {
     private readonly IUsuarioRepository _repository;
-    private readonly IValidator<CreateUsuarioRequestDto> _validator;
+    private readonly IValidator<CreateUsuarioRequestDto> _createValidator;
+    private readonly IValidator<UpdateUsuarioRequestDto> _updateValidator;
 
-    public UsuariosController(IUsuarioRepository repository, IValidator<CreateUsuarioRequestDto> validator)
+    public UsuariosController(
+        IUsuarioRepository repository,
+        IValidator<CreateUsuarioRequestDto> createValidator,
+        IValidator<UpdateUsuarioRequestDto> updateValidator)
     {
         _repository = repository;
-        _validator = validator;
+        _createValidator = createValidator;
+        _updateValidator = updateValidator;
     }
 
+    // GET /api/usuarios  ->  200 OK
     [HttpGet]
     public async Task<IActionResult> GetUsuarios()
     {
         var usuarios = await _repository.GetAllAsync();
-
-        var response = usuarios.Select(u => new UsuarioResponseDto
-        {
-            Id = u.Id,
-            Nombre = u.Nombre,
-            Email = u.Email,
-            Rol = u.Rol.ToString(),
-            Estado = u.Estado.ToString(),
-            Verificado = u.Verificado
-        });
-
-        return Ok(response);
+        return Ok(usuarios.Select(MapToResponse));
     }
 
+    // GET /api/usuarios/{id}  ->  200 OK | 404 Not Found
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetUsuarioPorId(int id)
+    {
+        var usuario = await _repository.GetByIdAsync(id);
+        if (usuario is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(MapToResponse(usuario));
+    }
+
+    // POST /api/usuarios  ->  201 Created | 400 Bad Request
     [HttpPost]
     public async Task<IActionResult> CrearUsuario([FromBody] CreateUsuarioRequestDto request)
     {
-        // 1. Validar con FluentValidation (reemplaza el `if` manual de la Clase 6)
-        var validationResult = await _validator.ValidateAsync(request);
+        var validationResult = await _createValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
         {
             return BadRequest(validationResult.Errors);
         }
 
-        // 2. Mapeo manual: DTO -> Entidad (solo lo permitido; PasswordHash real se calculará con
-        //    hashing cuando lleguemos a autenticación — por ahora lo dejamos como placeholder)
         var nuevoUsuario = new Usuario
         {
             Nombre = request.Nombre,
@@ -56,20 +62,57 @@ public class UsuariosController : ControllerBase
             PasswordHash = request.Password // TODO: reemplazar por hash real en la Fase de Auth
         };
 
-        // 3. Persistencia
         var usuarioCreado = await _repository.AddAsync(nuevoUsuario);
+        var response = MapToResponse(usuarioCreado);
 
-        // 4. Mapeo de retorno: Entidad -> DTO (nunca devolvemos PasswordHash)
-        var response = new UsuarioResponseDto
-        {
-            Id = usuarioCreado.Id,
-            Nombre = usuarioCreado.Nombre,
-            Email = usuarioCreado.Email,
-            Rol = usuarioCreado.Rol.ToString(),
-            Estado = usuarioCreado.Estado.ToString(),
-            Verificado = usuarioCreado.Verificado
-        };
-
-        return CreatedAtAction(nameof(GetUsuarios), new { id = response.Id }, response);
+        return CreatedAtAction(nameof(GetUsuarioPorId), new { id = response.Id }, response);
     }
+
+    // PUT /api/usuarios/{id}  ->  204 No Content | 400 Bad Request | 404 Not Found
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> ActualizarUsuario(int id, [FromBody] UpdateUsuarioRequestDto request)
+    {
+        var validationResult = await _updateValidator.ValidateAsync(request);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.Errors);
+        }
+
+        var usuario = await _repository.GetByIdAsync(id);
+        if (usuario is null)
+        {
+            return NotFound();
+        }
+
+        usuario.Nombre = request.Nombre;
+        await _repository.UpdateAsync(usuario);
+
+        return NoContent();
+    }
+
+    // DELETE /api/usuarios/{id}  ->  204 No Content | 404 Not Found
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> EliminarUsuario(int id)
+    {
+        var usuario = await _repository.GetByIdAsync(id);
+        if (usuario is null)
+        {
+            return NotFound();
+        }
+
+        await _repository.DeleteAsync(usuario);
+
+        return NoContent();
+    }
+
+    // Mapeo Entidad -> DTO (nunca devolvemos PasswordHash)
+    private static UsuarioResponseDto MapToResponse(Usuario u) => new()
+    {
+        Id = u.Id,
+        Nombre = u.Nombre,
+        Email = u.Email,
+        Rol = u.Rol.ToString(),
+        Estado = u.Estado.ToString(),
+        Verificado = u.Verificado
+    };
 }

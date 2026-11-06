@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LensBook.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2350a54a7e603a15b9abc779007b72f6a0a0acf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de8223a70f8b49670d91fb4733436139c99b9c3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("LensBook.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LensBook.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
