@@ -1,7 +1,12 @@
 // frontend/src/features/usuarios/components/UsuarioCard.tsx
 import type { Usuario } from '../types/usuario.types'
 
-export function UsuarioCard({ id, nombre, email, rol, estado, verificado }: Usuario) {
+// El contrato de la tarjeta = el DTO de lectura + la acción que le delega el padre
+interface UsuarioCardProps extends Usuario {
+    onEliminar: (id: number) => void;
+}
+
+export function UsuarioCard({ id, nombre, email, rol, estado, verificado, onEliminar }: UsuarioCardProps) {
     return (
         <article className="bg-slate-800 border border-slate-700 rounded-xl p-5 flex flex-col justify-between hover:border-indigo-500 transition-colors shadow-sm">
             <div>
@@ -27,12 +32,22 @@ export function UsuarioCard({ id, nombre, email, rol, estado, verificado }: Usua
                 </div>
             </div>
 
-            <button
-                disabled
-                className="w-full bg-slate-900/80 text-slate-400 text-sm font-medium py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-700"
-            >
-                Ver detalle (Requiere Sesión)
-            </button>
+            <div className="flex flex-col gap-2">
+                <button
+                    disabled
+                    className="w-full bg-slate-900/80 text-slate-400 text-sm font-medium py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-700"
+                >
+                    🔒 Ver detalle (Requiere Sesión)
+                </button>
+
+                <button
+                    type="button"
+                    onClick={() => onEliminar(id)}
+                    className="w-full bg-transparent text-red-300 hover:bg-red-500/10 text-sm font-medium py-2.5 px-4 rounded-lg cursor-pointer border border-red-500/40 transition-colors"
+                >
+                    🗑 Eliminar
+                </button>
+            </div>
         </article>
     );
 }
